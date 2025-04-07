@@ -1,0 +1,125 @@
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 4rem 0 2rem;
+
+  .footerContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .footerContent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .footerColumn {
+    h4 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, #4d9fb4, #355bc0);
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.75rem;
+
+        a {
+          color: #d1c7bf;
+          font-size: 0.9rem;
+          transition: color 0.3s ease;
+          display: inline-block;
+
+          &:hover {
+            color: #4d9fb4;
+            transform: translateX(3px);
+          }
+        }
+      }
+    }
+  }
+
+  .certifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+    .certification {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #4d9fb4;
+        background-color: rgba(77, 159, 180, 0.1);
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .copyrightText {
+      color: #d1c7bf;
+      font-size: 0.85rem;
+    }
+
+    .themeToggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #d1c7bf;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #4d9fb4;
+      }
+    }
+  }
+}
