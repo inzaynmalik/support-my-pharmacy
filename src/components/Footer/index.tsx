@@ -1,46 +1,49 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Sun } from 'lucide-react';
-import styles from './index.module.scss';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { Sun } from "lucide-react";
+import styles from "./index.module.scss";
+import { motion } from "framer-motion";
 
 const Footer = () => {
-  const supportLinks = [
-    { id: 'support', label: 'Support', url: '#support' },
-    { id: 'hardware', label: 'Hardware', url: '#hardware' },
-    { id: 'connectivity', label: 'Connectivity', url: '#connectivity' },
-    { id: 'contact', label: 'Contact Us', url: '#contact' },
-    { id: 'status', label: 'Status', url: '#status' },
+  const contactLinks = [
+    { id: "support", label: "Support", url: "#support" },
+    { id: "hardware", label: "Hardware", url: "#hardware" },
+    { id: "connectivity", label: "Connectivity", url: "#connectivity" },
+    { id: "contact", label: "Contact Us", url: "#contact" },
+    { id: "status", label: "Status", url: "#status" },
   ];
 
   const developmentLinks = [
-    { id: 'integrations', label: 'Integrations', url: '#integrations' },
+    { id: "integrations", label: "Integrations", url: "#integrations" },
   ];
 
   const resourceLinks = [
-    { id: 'branding', label: 'Branding', url: '#branding' },
-    { id: 'terms', label: 'Terms & Conditions', url: '#terms' },
-    { id: 'privacy', label: 'Privacy Policy', url: '#privacy' },
+    { id: "branding", label: "Branding", url: "#branding" },
+    { id: "terms", label: "Terms & Conditions", url: "#terms" },
+    { id: "privacy", label: "Privacy Policy", url: "#privacy" },
   ];
 
   const aboutLinks = [
-    { id: 'team', label: 'Our Team', url: '#team' },
-    { id: 'join', label: 'Join Us', url: '#join' },
+    { id: "team", label: "Our Team", url: "#team" },
+    { id: "join", label: "Join Us", url: "#join" },
   ];
 
   const certifications = [
-    { id: 'iso', label: 'ISO27001 Certified', url: '#security-approach' },
-    { id: 'privacy', label: 'Advanced Data Privacy', url: '#privacy-policy' },
-    { id: 'uptime', label: '99.9% Uptime', url: '#status' },
-    { id: 'reliable', label: 'Reliable and scalable', url: '#security-approach' },
+    { id: "privacy", label: "Advanced Data Privacy", url: "#privacy-policy" },
+    { id: "uptime", label: "99.9% Uptime", url: "#status" },
+    {
+      id: "reliable",
+      label: "Reliable and scalable",
+      url: "#security-approach",
+    },
   ];
 
   const footerColumns = [
-    { title: 'Support', links: supportLinks },
-    { title: 'Development', links: developmentLinks },
-    { title: 'Resources', links: resourceLinks },
-    { title: 'About', links: aboutLinks },
+    { title: "Contact Us", links: contactLinks },
+    // { title: "Development", links: developmentLinks },
+    // { title: "Resources", links: resourceLinks },
+    // { title: "About", links: aboutLinks },
   ];
 
   return (
@@ -67,7 +70,11 @@ const Footer = () => {
 
         <div className={styles.certifications}>
           {certifications.map((cert) => (
-            <Link key={cert.id} href={cert.url} className={styles.certification}>
+            <Link
+              key={cert.id}
+              href={cert.url}
+              className={styles.certification}
+            >
               {cert.label}
             </Link>
           ))}
@@ -75,11 +82,7 @@ const Footer = () => {
 
         <div className={styles.copyright}>
           <div className={styles.copyrightText}>
-            © 2025 TitanPMR Ltd. All rights reserved.
-          </div>
-          <div className={styles.themeToggle}>
-            <Sun size={16} />
-            Light Mode
+            © 2025 Support My PharmacyPMR Ltd. All rights reserved.
           </div>
         </div>
       </div>

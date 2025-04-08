@@ -30,7 +30,7 @@
     align-items: center;
 
     img {
-      height: 40px;
+      max-height: 100px;
       width: auto;
     }
   }
@@ -64,7 +64,7 @@
         }
 
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: -5px;
           left: 0;

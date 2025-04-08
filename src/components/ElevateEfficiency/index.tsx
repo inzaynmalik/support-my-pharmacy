@@ -1,29 +1,31 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import styles from './index.module.scss';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import styles from "./index.module.scss";
+import { motion } from "framer-motion";
 
 const ElevateEfficiency = () => {
   const features = [
     {
-      id: 'paperless',
-      title: 'Embrace the Paperless Era',
-      description: 'Digitise your workflow for seamless operations. Visualise your prescriptions with our beautiful workflow boards',
-      link: '#',
+      id: "paperless",
+      title: "Embrace the Paperless Era",
+      description:
+        "Digitise your workflow for seamless operations. Visualise your prescriptions with our beautiful workflow boards",
+      link: "#",
     },
     {
-      id: 'connect',
-      title: 'Connect all your stores',
-      description: 'Efficiently share workloads across pharmacies, clinical checks to dispensing',
-      link: '/titanverse',
+      id: "connect",
+      title: "Connect all your stores",
+      description:
+        "Efficiently share workloads across pharmacies, clinical checks to dispensing",
+      link: "/Support My Pharmacyverse",
     },
     {
-      id: 'scan',
-      title: 'One-Scan Confidence',
-      description: 'One scan for precise checks and efficient management.',
-      link: '#',
+      id: "scan",
+      title: "One-Scan Confidence",
+      description: "One scan for precise checks and efficient management.",
+      link: "#",
     },
   ];
 
@@ -64,7 +66,7 @@ const ElevateEfficiency = () => {
             >
               <h3 className={styles.featureTitle}>{feature.title}</h3>
               <p className={styles.featureDesc}>{feature.description}</p>
-              {feature.id === 'connect' && (
+              {feature.id === "connect" && (
                 <Link href={feature.link} className={styles.featureLink}>
                   Find out more <ArrowRight size={16} />
                 </Link>

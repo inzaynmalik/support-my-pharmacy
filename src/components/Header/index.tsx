@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
-import styles from './index.module.scss';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import styles from "./index.module.scss";
+import { motion, AnimatePresence } from "framer-motion";
+import logoSrc from "@/assets/logo.png";
+import Image from "next/image";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -19,59 +21,49 @@ const Header = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const navItems = [
-    { id: 'products', label: 'Products', url: '#products' },
-    { id: 'sectors', label: 'Sectors', url: '#sectors' },
-    { id: 'pricing', label: 'Pricing', url: '#pricing' },
-    { id: 'marketplace', label: 'Marketplace', url: '#marketplace' },
-    { id: 'blogs', label: 'Blogs', url: '#blogs' },
-  ];
-
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
         <div className={styles.headerContainer}>
           <Link href="/" className={styles.logo}>
-            <span>TITAN</span>
+            <Image
+              src={logoSrc}
+              alt="Support My Pharmacy Logo"
+              width={3000}
+              height={300}
+              priority
+              style={{
+                height: "auto",
+                width: "auto",
+                maxHeight: "100px",
+                maxWidth: "200px",
+              }}
+            />
           </Link>
 
           <div className={styles.nav}>
-            <ul className={styles.navItems}>
-              {navItems.map((item) => (
-                <motion.li
-                  key={item.id}
-                  className={styles.navItem}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.indexOf(item) * 0.1 }}
-                >
-                  <Link href={item.url}>{item.label}</Link>
-                </motion.li>
-              ))}
-            </ul>
-
             <div className={styles.cta}>
               <motion.a
-                href="/register"
+                // href="/register"
                 className={styles.registerButton}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Register now
+                <button>Contact us</button>
               </motion.a>
             </div>
 
-            <button className={styles.mobileMenuButton} onClick={toggleMenu}>
+            {/* <button className={styles.mobileMenuButton} onClick={toggleMenu}>
               <Menu size={24} />
-            </button>
+            </button> */}
           </div>
         </div>
       </header>
@@ -79,10 +71,10 @@ const Header = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}
-            initial={{ x: '-100%' }}
+            className={`${styles.mobileMenu} ${menuOpen ? styles.open : ""}`}
+            initial={{ x: "-100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '-100%' }}
+            exit={{ x: "-100%" }}
             transition={{ duration: 0.3 }}
           >
             <button className={styles.closeButton} onClick={toggleMenu}>
@@ -90,28 +82,13 @@ const Header = () => {
             </button>
 
             <ul className={styles.mobileNavItems}>
-              {navItems.map((item) => (
-                <motion.li
-                  key={item.id}
-                  className={styles.mobileNavItem}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: navItems.indexOf(item) * 0.1 }}
-                >
-                  <Link href={item.url} onClick={toggleMenu}>
-                    {item.label}
-                  </Link>
-                </motion.li>
-              ))}
               <motion.li
                 className={styles.mobileNavItem}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
+                // transition={{ duration: 0.3, delay: navItems.length * 0.1 }}
               >
-                <Link href="/register" onClick={toggleMenu}>
-                  Register now
-                </Link>
+                <button>Contact us</button>
               </motion.li>
             </ul>
           </motion.div>

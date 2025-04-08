@@ -1,62 +1,70 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
-import styles from './index.module.scss';
-import { motion } from 'framer-motion';
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import styles from "./index.module.scss";
+import { motion } from "framer-motion";
 
 const Growth = () => {
   const cards = [
     {
-      id: 'future',
-      title: 'Built for the Future',
-      description: 'Future-proof with scalable, secure and cloud based technology',
+      id: "future",
+      title: "Built for the Future",
+      description:
+        "Future-proof with scalable, secure and cloud based technology",
     },
     {
-      id: 'performance',
-      title: 'Unmatched Performance',
-      description: 'Rely on TITAN for fast, reliable operations, supported by the seamless integration of inbuilt apps for a performance that never sleeps.',
+      id: "performance",
+      title: "Unmatched Performance",
+      description:
+        "Rely on Support My Pharmacy for fast, reliable operations, supported by the seamless integration of inbuilt apps for a performance that never sleeps.",
     },
   ];
 
-  const apps = [
-    {
-      id: 'mobile',
-      title: 'PMR Meets Mobile',
-      description: 'Break away from the dispensing benches and put the PMR in your pocket',
-      link: '/mobile',
-    },
-    {
-      id: 'order',
-      title: 'Automated Order Management',
-      description: 'Ditch the paper records, know exactly what the patients ordered at any time',
-      link: '/repeat',
-    },
-    {
-      id: 'batch',
-      title: 'Batch Dispense',
-      description: 'Shockingly quick dispensing in large batches. Voice guided with quick checking',
-      link: '/batch',
-    },
-    {
-      id: 'document',
-      title: 'Document Management',
-      description: 'Slick paperless document management with customised email inbox',
-      link: '/mail',
-    },
-    {
-      id: 'services',
-      title: 'Services Platform',
-      description: 'The newly discovered nebula of pharmacy innovation with services for both NHS and Private',
-      link: '/titanverse',
-    },
-    {
-      id: 'ai',
-      title: 'Artificial Intelligence',
-      description: 'AI meets pharmacy with TITAN AI. Switch on and Walk Away',
-      link: '/ai',
-    },
-  ];
+  // const apps = [
+  //   {
+  //     id: "mobile",
+  //     title: "PMR Meets Mobile",
+  //     description:
+  //       "Break away from the dispensing benches and put the PMR in your pocket",
+  //     link: "/mobile",
+  //   },
+  //   {
+  //     id: "order",
+  //     title: "Automated Order Management",
+  //     description:
+  //       "Ditch the paper records, know exactly what the patients ordered at any time",
+  //     link: "/repeat",
+  //   },
+  //   {
+  //     id: "batch",
+  //     title: "Batch Dispense",
+  //     description:
+  //       "Shockingly quick dispensing in large batches. Voice guided with quick checking",
+  //     link: "/batch",
+  //   },
+  //   {
+  //     id: "document",
+  //     title: "Document Management",
+  //     description:
+  //       "Slick paperless document management with customised email inbox",
+  //     link: "/mail",
+  //   },
+  //   {
+  //     id: "services",
+  //     title: "Services Platform",
+  //     description:
+  //       "The newly discovered nebula of pharmacy innovation with services for both NHS and Private",
+  //     link: "/Support My Pharmacyverse",
+  //   },
+  //   {
+  //     id: "ai",
+  //     title: "Artificial Intelligence",
+  //     description:
+  //       "AI meets pharmacy with Support My Pharmacy AI. Switch on and Walk Away",
+  //     link: "/ai",
+  //   },
+  // ];
 
   return (
     <section className={styles.growthSection}>
@@ -108,7 +116,7 @@ const Growth = () => {
           ))}
         </div>
 
-        <div className={styles.appsSection}>
+        {/* <div className={styles.appsSection}>
           <div className={styles.appsHeader}>
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -137,7 +145,10 @@ const Growth = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.5) + 0.4 }}
+                transition={{
+                  duration: 0.5,
+                  delay: Math.min(index * 0.1, 0.5) + 0.4,
+                }}
                 whileHover={{ y: -5 }}
               >
                 <h3 className={styles.appTitle}>{app.title}</h3>
@@ -148,7 +159,7 @@ const Growth = () => {
               </motion.div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <motion.div
           className={styles.marketplace}
@@ -157,9 +168,11 @@ const Growth = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <h3 className={styles.marketplaceTitle}>Expand with Titan Marketplace</h3>
-          <Link href="/marketplace" className={styles.marketplaceLink}>
-            Learn more about Marketplace <ArrowRight size={16} />
+          <h3 className={styles.marketplaceTitle}>
+            Expand with Support My Pharmacy
+          </h3>
+          <Link href="/contact" className={styles.marketplaceLink}>
+            Contact us <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>
