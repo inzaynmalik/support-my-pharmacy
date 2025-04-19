@@ -9,6 +9,7 @@ import {
   slideInLeftVariants,
   slideInRightVariants,
 } from "@/lib/animations";
+import { XCircle, CheckCircle } from "lucide-react";
 
 const scrollToForm = () => {
   const formSection = document.getElementById("contact-form");
@@ -44,9 +45,12 @@ export const DigitalLandscapeSection = () => {
             variants={slideInLeftVariants}
             className="reveal bg-pharmacy-darkblue/30 rounded-lg p-8 backdrop-blur-sm border border-pharmacy-blue/20"
           >
-            <h3 className="text-2xl font-bold mb-4 text-white font-inter">
-              The Problem
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <XCircle className="w-8 h-8 text-red-500" />
+              <h3 className="text-2xl font-bold text-white font-inter">
+                The Problem
+              </h3>
+            </div>
             <p className="text-gray-300 mb-6 font-roboto">
               Struggling to compete with CVS/Walgreens online? It's time to
               level the playing field with a digital strategy tailored for
@@ -61,9 +65,12 @@ export const DigitalLandscapeSection = () => {
             variants={slideInRightVariants}
             className="reveal bg-pharmacy-darkblue/30 rounded-lg p-8 backdrop-blur-sm border border-pharmacy-blue/20"
           >
-            <h3 className="text-2xl font-bold mb-4 text-white font-inter">
-              Our Solution
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <CheckCircle className="w-8 h-8 text-green-500" />
+              <h3 className="text-2xl font-bold text-white font-inter">
+                Our Solution
+              </h3>
+            </div>
             <ul className="space-y-3 text-gray-300 mb-6 font-roboto">
               <li className="flex items-center">
                 <div className="w-2 h-2 rounded-full bg-pharmacy-blue mr-2"></div>
