@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CustomButton } from "../ui/custom-button";
 import { fadeInVariants, slideUpVariants } from "@/lib/animations";
+import Image from "next/image";
 
 export const HeroSection = () => {
   const scrollToForm = () => {
@@ -15,6 +16,21 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden">
+      <div className="absolute top-0 left-4 md:left-6 z-20">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src="/images/black-logo.png"
+            alt="Company Logo"
+            width={150}
+            height={100}
+          />
+        </motion.div>
+      </div>
+
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 bg-cover bg-center"
