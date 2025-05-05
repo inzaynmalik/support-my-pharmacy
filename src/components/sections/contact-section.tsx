@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,8 +8,54 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CustomButton } from "../ui/custom-button";
 import { containerVariants, itemVariants } from "@/lib/animations";
+import { sendEmail } from "@/lib/email-service";
 
 export const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    pharmacyName: "",
+    email: "",
+    phone: "",
+    interest: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const result = await sendEmail(formData);
+      if (result.success) {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          pharmacyName: "",
+          email: "",
+          phone: "",
+          interest: "",
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section
       id="contact-form"
@@ -46,7 +92,7 @@ export const ContactSection = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 gap-6">
                     <div className="space-y-2">
                       <div className="flex items-center">
@@ -62,8 +108,11 @@ export const ContactSection = () => {
                       </div>
                       <Input
                         id="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                         placeholder="Please Enter your Name"
                         className="bg-pharmacy-darkblue/50 border-pharmacy-blue/30 text-white font-poppins"
+                        required
                       />
                     </div>
 
@@ -73,16 +122,19 @@ export const ContactSection = () => {
                           2
                         </div>
                         <Label
-                          htmlFor="pharmacy-name"
+                          htmlFor="pharmacyName"
                           className="text-white font-poppins"
                         >
                           Pharmacy Name
                         </Label>
                       </div>
                       <Input
-                        id="pharmacy-name"
+                        id="pharmacyName"
+                        value={formData.pharmacyName}
+                        onChange={handleInputChange}
                         placeholder="Please Enter the Name of your Pharmacy"
                         className="bg-pharmacy-darkblue/50 border-pharmacy-blue/30 text-white font-poppins"
+                        required
                       />
                     </div>
 
@@ -101,8 +153,11 @@ export const ContactSection = () => {
                       <Input
                         id="email"
                         type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                         placeholder="Please Enter Your Email"
                         className="bg-pharmacy-darkblue/50 border-pharmacy-blue/30 text-white font-poppins"
+                        required
                       />
                     </div>
 
@@ -120,8 +175,11 @@ export const ContactSection = () => {
                       </div>
                       <Input
                         id="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         placeholder="Please Enter Your Phone Number"
                         className="bg-pharmacy-darkblue/50 border-pharmacy-blue/30 text-white font-poppins"
+                        required
                       />
                     </div>
 
@@ -139,8 +197,11 @@ export const ContactSection = () => {
                       </div>
                       <Textarea
                         id="interest"
+                        value={formData.interest}
+                        onChange={handleInputChange}
                         placeholder="Marketing, App, AI, etc."
                         className="bg-pharmacy-darkblue/50 border-pharmacy-blue/30 text-white resize-none h-24 font-poppins"
+                        required
                       />
                     </div>
                   </div>
@@ -149,9 +210,24 @@ export const ContactSection = () => {
                     <p className="text-gray-300 text-sm font-poppins">
                       No spam. No audits. Just solutions.
                     </p>
-                    <CustomButton className="w-full" size="lg">
-                      Get Started today!
+                    <CustomButton
+                      type="submit"
+                      className="w-full"
+                      size="lg"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Sending..." : "Get Started today!"}
                     </CustomButton>
+                    {submitStatus === "success" && (
+                      <p className="text-green-500 text-sm font-poppins text-center">
+                        Thank you! We'll be in touch soon.
+                      </p>
+                    )}
+                    {submitStatus === "error" && (
+                      <p className="text-red-500 text-sm font-poppins text-center">
+                        Something went wrong. Please try again.
+                      </p>
+                    )}
                   </div>
                 </form>
               </CardContent>
@@ -183,7 +259,7 @@ export const ContactSection = () => {
                     quickly.
                   </p>
                   <p className="text-white font-poppins">
-                    Call us at (239) 555-0108
+                    Call us at (727) 999-8362
                   </p>
                 </div>
               </div>

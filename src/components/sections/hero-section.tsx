@@ -1,17 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { CustomButton } from "../ui/custom-button";
 import { fadeInVariants, slideUpVariants } from "@/lib/animations";
 import Image from "next/image";
+import { ContactFormDialog } from "../contact-form-dialog";
 
 export const HeroSection = () => {
-  const scrollToForm = () => {
-    const formSection = document.getElementById("contact-form");
-    if (formSection) {
-      formSection.scrollIntoView({ behavior: "smooth" });
-    }
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const openContactForm = () => {
+    setIsDialogOpen(true);
   };
 
   return (
@@ -67,10 +67,10 @@ export const HeroSection = () => {
             variants={slideUpVariants}
             className="flex flex-col sm:flex-row gap-4"
           >
-            <CustomButton size="lg" onClick={scrollToForm}>
+            <CustomButton size="lg" onClick={openContactForm}>
               Get Free Consultation
             </CustomButton>
-            <CustomButton variant="outline" size="lg" onClick={scrollToForm}>
+            <CustomButton variant="outline" size="lg" onClick={openContactForm}>
               Learn More
             </CustomButton>
           </motion.div>
@@ -85,6 +85,8 @@ export const HeroSection = () => {
           {/* This div is left intentionally empty as the pharmacist image is in the hero background */}
         </motion.div>
       </div>
+
+      <ContactFormDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
     </section>
   );
 };

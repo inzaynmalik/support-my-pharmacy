@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React from "react";
 import { Button } from "@/components/ui/button";
@@ -13,10 +13,25 @@ interface CustomButtonProps {
   className?: string;
   onClick?: () => void;
   href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
-  ({ children, variant = "primary", size = "default", className, onClick, href, ...props }, ref) => {
+  (
+    {
+      children,
+      variant = "primary",
+      size = "default",
+      className,
+      onClick,
+      href,
+      type = "button",
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
     const baseClass =
       variant === "primary"
         ? "bg-gradient-to-r from-pharmacy-blue to-pharmacy-lightblue text-white hover:brightness-110 transition-all duration-300"
@@ -34,11 +49,7 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
           ref={ref}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
-          className={cn(
-            buttonVariants({ size }),
-            baseClass,
-            className
-          )}
+          className={cn(buttonVariants({ size }), baseClass, className)}
           onClick={onClick}
           {...props}
         >
@@ -50,12 +61,10 @@ const CustomButton = React.forwardRef<HTMLButtonElement, CustomButtonProps>(
         ref={ref}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className={cn(
-          buttonVariants({ size }),
-          baseClass,
-          className
-        )}
+        className={cn(buttonVariants({ size }), baseClass, className)}
         onClick={onClick}
+        type={type}
+        disabled={disabled}
         {...props}
       >
         {children}
